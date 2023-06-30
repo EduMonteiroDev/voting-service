@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+import static com.sicredi.votingservice.constants.VotingServiceConstants.CREATE_TOPIC_SUCCESSFULLY;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/v1", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -22,6 +24,6 @@ public class TopicController {
     @PostMapping("/topic-voting")
     public ResponseEntity<String> createTopic(@Valid @RequestBody TopicRequest topicRequest) {
         topicService.insertNewTopic(topicRequest.getTopicName());
-        return ResponseEntity.ok("Tópico de votação criado com sucesso!");
+        return ResponseEntity.ok(CREATE_TOPIC_SUCCESSFULLY);
     }
 }

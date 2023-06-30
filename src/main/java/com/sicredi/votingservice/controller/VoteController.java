@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
+import static com.sicredi.votingservice.constants.VotingServiceConstants.COMPUTED_VOTE_SUCCESSFULLY;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/v1", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -21,7 +23,7 @@ public class VoteController {
     @PostMapping(value = "/votes/{topicId}")
     public ResponseEntity<String> vote(@NotBlank @PathVariable Long topicId,@Valid @RequestBody VoteRequest voteRequest) {
         voteService.processVote(topicId, voteRequest);
-        return ResponseEntity.ok("Voto computado com sucesso!");
+        return ResponseEntity.ok(COMPUTED_VOTE_SUCCESSFULLY);
     }
 
     @GetMapping(value = "/votes/{topicId}")

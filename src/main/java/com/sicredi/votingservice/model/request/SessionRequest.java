@@ -13,5 +13,5 @@ import java.time.OffsetDateTime;
 @NoArgsConstructor
 public class SessionRequest {
 
-    private OffsetDateTime sessionEndTime;
+    private Long sessionEndTime;
 }

@@ -1,5 +1,6 @@
 package com.sicredi.votingservice.service;
 
+import com.sicredi.votingservice.exception.DatabaseException;
 import com.sicredi.votingservice.model.entity.TopicEntity;
 import com.sicredi.votingservice.repository.TopicRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ public class TopicService {
         try{
             topicRepository.save(TopicEntity.builder().topicName(topicName).build());
         }catch (RuntimeException e){
-            throw new IllegalArgumentException("Houve algum problema de conexão com o banco de dados, tente novamente mais tarde...");
+            throw new DatabaseException();
         }
     }
 
@@ -24,7 +25,7 @@ public class TopicService {
         try{
             return topicRepository.findById(topicId);
         }catch (RuntimeException e){
-            throw new IllegalArgumentException("Houve algum problema de conexão com o banco de dados, tente novamente mais tarde...");
+            throw new DatabaseException();
         }
     }
 }

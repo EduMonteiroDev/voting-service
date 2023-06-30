@@ -24,8 +24,6 @@ public class SessionEntity {
     @JoinColumn(name = "topic_id")
     private TopicEntity topic;
 
-    private OffsetDateTime startingVoting;
-    private OffsetDateTime finalVoting;
-    private Boolean sessionIsClosed;
-    private Boolean resultSendMessage;
+    private OffsetDateTime sessionEndTime;
+    private Boolean pushedMessage;
 }

@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class VoteRequest {
 
-    @CPF(message = "CPF inválido")
+    @CPF(message = "Invalid document number!")
     private String document;
     private Boolean vote;
 }
