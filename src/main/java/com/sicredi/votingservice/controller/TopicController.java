@@ -3,7 +3,6 @@ package com.sicredi.votingservice.controller;
 import com.sicredi.votingservice.model.request.TopicRequest;
 import com.sicredi.votingservice.service.TopicService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +15,7 @@ import static com.sicredi.votingservice.constants.VotingServiceConstants.CREATE_
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/v1", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping("/v1")
 public class TopicController {
 
     private final TopicService topicService;

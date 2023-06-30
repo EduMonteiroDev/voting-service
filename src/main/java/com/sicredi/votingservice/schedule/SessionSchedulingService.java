@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import java.time.OffsetDateTime;
 
+import static com.sicredi.votingservice.constants.VotingServiceConstants.FINALIZATION_JOB_MESSAGE;
+import static com.sicredi.votingservice.constants.VotingServiceConstants.START_JOB_MESSAGE;
 import static java.util.Objects.isNull;
 
 @Slf4j
@@ -23,7 +25,7 @@ public class SessionSchedulingService {
 
     @Scheduled(cron = "15 * * * * *")
     public void triggerClosedSessionsMessages(){
-        log.info("Preparing to inform the platform of the poll results...");
+        log.info(START_JOB_MESSAGE);
         var offsetDateTime = OffsetDateTime.now();
         var sessions = sessionService.getClosedSessions(offsetDateTime);
         sessions.stream()
@@ -34,6 +36,6 @@ public class SessionSchedulingService {
                     sessionService.updateSession(session);
                     sessionProducer.sendMessage(session.getTopic().getTopicName(), voteResponse);
                 });
-        log.info("The results have been pushed!");
+        log.info(FINALIZATION_JOB_MESSAGE);
     }
 }
