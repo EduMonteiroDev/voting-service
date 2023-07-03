@@ -4,6 +4,7 @@ import com.sicredi.votingservice.model.request.TopicRequest;
 import com.sicredi.votingservice.service.TopicService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -34,10 +35,12 @@ public class TopicController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",
                     description = "Ok",
-                    content = @Content(mediaType = "application/json")),
+                    content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = String.class))),
             @ApiResponse(responseCode = "500",
                     description = "Internal Server Error",
-                    content = @Content(mediaType = "application/json"))})
+                    content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Object.class)))})
     @PostMapping("/topic-voting")
     public ResponseEntity<String> createTopic(@Valid @NotNull @RequestBody TopicRequest topicRequest) {
         topicService.insertNewTopic(topicRequest.getTopicName());

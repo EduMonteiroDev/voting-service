@@ -33,13 +33,16 @@ public class VoteController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",
                     description = "Ok",
-                    content = @Content(mediaType = "application/json")),
+                    content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = String.class))),
             @ApiResponse(responseCode = "400",
                     description = "Bad Request",
-                    content = @Content(mediaType = "application/json")),
+                    content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Object.class))),
             @ApiResponse(responseCode = "500",
                     description = "Internal Server Error",
-                    content = @Content(mediaType = "application/json"))})
+                    content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Object.class)))})
     @PostMapping(value = "/votes/{topicId}")
     public ResponseEntity<String> vote(@NotNull @PathVariable Long topicId, @Valid @NotNull @RequestBody VoteRequest voteRequest) {
         voteService.processVote(topicId, voteRequest);
@@ -55,10 +58,12 @@ public class VoteController {
                             schema = @Schema(implementation = VoteResponse.class))),
             @ApiResponse(responseCode = "400",
                     description = "Bad Request",
-                    content = @Content(mediaType = "application/json")),
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Object.class))),
             @ApiResponse(responseCode = "500",
                     description = "Internal Server Error",
-                    content = @Content(mediaType = "application/json"))})
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Object.class)))})
     @GetMapping(value = "/votes/{topicId}")
     public ResponseEntity<VoteResponse> result(@NotNull @PathVariable Long topicId) {
         var voteResponse = voteService.getTopicResult(topicId);
