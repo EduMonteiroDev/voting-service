@@ -31,6 +31,14 @@ desse tópico criado, ao qual os usuários poderão votar nas sessões que estej
 - Maven
     - Utilizei a versão **3.9.2**
 
+## Documentação
+
+1. Acessar documentação após startar o service através da seguinte url:
+```sh
+http://localhost:8080/swagger-ui/index.html#/
+```
+
+
 ## Pré-execução
 
 1. Clonar o repositório:
